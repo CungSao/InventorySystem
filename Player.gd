@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-signal toggle_inventory()
+signal toggle_inventory
 
 @export var inventory_data:InventoryData
 

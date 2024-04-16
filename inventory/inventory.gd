@@ -9,11 +9,11 @@ const SLOT = preload("res://inventory/slot.tscn")
 	#populate_item_grid(TEST_INV.slot_datas)
 
 func set_inventory_data(inventory_data:InventoryData):
+	inventory_data.inventory_updated.connect(populate_item_grid)
 	populate_item_grid(inventory_data)
 
 func populate_item_grid(inventory_data:InventoryData):
 	for child in item_grid.get_children():
-		print("a")
 		child.queue_free()
 	
 	for slot_data in inventory_data.slot_datas:
