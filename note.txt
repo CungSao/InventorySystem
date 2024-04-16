@@ -1,3 +1,0 @@
-Err
-1. Không thể đóng hồm đồ bằng nút E khi không nhìn hòm hoặc đi xa khỏi
-2. Nhiều pickup cùng vị trí thì chỉ nhặt được 1
