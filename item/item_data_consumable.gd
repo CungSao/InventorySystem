@@ -4,4 +4,5 @@ class_name ItemDataConsumable extends ItemData
 
 func use(target):
 	# heal
-	pass
+	if heal_value != 0:
+		target.heal(heal_value)

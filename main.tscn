@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4pngr7ad0hjv"]
+[gd_scene load_steps=21 format=3 uid="uid://c4pngr7ad0hjv"]
 
-[ext_resource type="PackedScene" uid="uid://dbmp84630wnf2" path="res://Player.tscn" id="1_hc41y"]
+[ext_resource type="PackedScene" uid="uid://dbmp84630wnf2" path="res://player/Player.tscn" id="1_hc41y"]
 [ext_resource type="Script" path="res://main.gd" id="1_nj572"]
 [ext_resource type="Resource" uid="uid://bsinxtn8wyb8k" path="res://test_inv.tres" id="2_wdbwu"]
 [ext_resource type="PackedScene" uid="uid://du8hp42wxtsso" path="res://UI/inventory_interface.tscn" id="4_7jl8h"]
+[ext_resource type="Script" path="res://inventory/inventory_data_equip.gd" id="4_y3vlc"]
+[ext_resource type="PackedScene" uid="uid://ba6miph2m4ixt" path="res://inventory/hot_bar_inventory.tscn" id="5_e8re8"]
 [ext_resource type="PackedScene" uid="uid://cr2x7s3kn13hc" path="res://interactable/chest.tscn" id="7_d58br"]
 [ext_resource type="PackedScene" uid="uid://dprxrrv3e750k" path="res://pickup/pickup.tscn" id="8_h2qbt"]
 [ext_resource type="Resource" uid="uid://dp6awpf8ejwep" path="res://item/items/apple.tres" id="9_58dcy"]
@@ -27,6 +29,10 @@ size = Vector2(20, 20)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8in4a"]
 data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[sub_resource type="Resource" id="Resource_ojfej"]
+script = ExtResource("4_y3vlc")
+slot_datas = Array[ExtResource("10_y3xmd")]([null])
 
 [sub_resource type="Resource" id="Resource_rqggt"]
 script = ExtResource("10_y3xmd")
@@ -78,10 +84,13 @@ shape = SubResource("ConcavePolygonShape3D_8in4a")
 [node name="Player" parent="." instance=ExtResource("1_hc41y")]
 transform = Transform3D(0.236804, 0, 0.971557, 0, 1, 0, -0.971557, 0, 0.236804, 2.28923, 0, 0)
 inventory_data = ExtResource("2_wdbwu")
+equip_inventory_data = SubResource("Resource_ojfej")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="InventoryInterface" parent="UI" instance=ExtResource("4_7jl8h")]
+
+[node name="HotBarInventory" parent="UI" instance=ExtResource("5_e8re8")]
 
 [node name="chest" parent="." instance=ExtResource("7_d58br")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75578)

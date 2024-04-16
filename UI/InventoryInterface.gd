@@ -8,8 +8,10 @@ var external_inventory_owner
 @onready var player_inventory = $PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
 @onready var external_inventory = $ExternalInventory
+@onready var equip_inventory = $EquipInventory
 
-func _physics_process(delta):
+
+func _physics_process(_delta):
 	if grabbed_slot.visible:
 		grabbed_slot.global_position = get_global_mouse_position() + Vector2(5,5)
 
@@ -18,6 +20,11 @@ func set_player_invetory_data(inventory_data:InventoryData):
 	inventory_data.inventory_interact.connect(on_inventory_interact)
 	player_inventory.set_inventory_data(inventory_data)
 
+
+func set_equip_invetory_data(inventory_data:InventoryData):
+	inventory_data.inventory_interact.connect(on_inventory_interact)
+	equip_inventory.set_inventory_data(inventory_data)
+	
 
 func set_external_inventory(_external_inventory_owner):
 	external_inventory_owner = _external_inventory_owner

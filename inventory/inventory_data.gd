@@ -12,7 +12,7 @@ func grab_slot_data(index) -> SlotData:
 	return slot_data
 
 
-func drop_slot_data(grabbed_slot_data, index) -> SlotData:
+func drop_slot_data(grabbed_slot_data, index:int) -> SlotData:
 	var slot_data = slot_datas[index]
 	
 	var return_slot_data:SlotData
@@ -37,6 +37,7 @@ func use_slot_data(index:int):
 			slot_datas[index] = null
 
 	print(slot_data.item_data.name)
+	PlayerManager.use_slot_data(slot_data)
 	
 	inventory_updated.emit(self)
 
@@ -57,7 +58,7 @@ func pick_up_slot_data(slot_data:SlotData) -> bool:
 	return false
 
 
-func drop_single_slot_data(grabbed_slot_data, index) -> SlotData:
+func drop_single_slot_data(grabbed_slot_data, index:int) -> SlotData:
 	var slot_data = slot_datas[index]
 	
 	if not slot_data:

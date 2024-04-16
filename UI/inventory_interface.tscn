@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://du8hp42wxtsso"]
 
-[ext_resource type="Script" path="res://inventory/InventoryInterface.gd" id="1_7ci4x"]
+[ext_resource type="Script" path="res://UI/InventoryInterface.gd" id="1_7ci4x"]
 [ext_resource type="PackedScene" uid="uid://g88toh8cecoo" path="res://inventory/inventory.tscn" id="2_00dfo"]
 [ext_resource type="PackedScene" uid="uid://d2pxr0bwn4udn" path="res://inventory/slot.tscn" id="3_8v1hj"]
 
@@ -19,6 +19,13 @@ layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 74.0
+offset_bottom = 74.0
+
+[node name="EquipInventory" parent="." instance=ExtResource("2_00dfo")]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 10.0
+offset_right = 514.0
 offset_bottom = 74.0
 
 [node name="ExternalInventory" parent="." instance=ExtResource("2_00dfo")]

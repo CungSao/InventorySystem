@@ -6,5 +6,5 @@ class_name ItemData extends Resource
 @export var texture:AtlasTexture
 
 
-func use(target):
+func use(_target):
 	pass
