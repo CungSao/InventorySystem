@@ -26,6 +26,21 @@ func drop_slot_data(grabbed_slot_data, index) -> SlotData:
 	return return_slot_data
 
 
+func use_slot_data(index:int):
+	var slot_data = slot_datas[index]
+	
+	if !slot_data: return
+	
+	if slot_data.item_data is ItemDataConsumable:
+		slot_data.quantity -= 1
+		if slot_data.quantity < 1:
+			slot_datas[index] = null
+
+	print(slot_data.item_data.name)
+	
+	inventory_updated.emit(self)
+
+
 func pick_up_slot_data(slot_data:SlotData) -> bool:
 	for index in slot_datas.size():
 		if slot_datas[index] and slot_datas[index].can_fully_merge_with(slot_data):
