@@ -1,0 +1,38 @@
+[gd_scene load_steps=10 format=3 uid="uid://cr2x7s3kn13hc"]
+
+[ext_resource type="Script" path="res://interactable/chest.gd" id="1_x2sjw"]
+[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="2_alium"]
+[ext_resource type="Resource" uid="uid://d3tc4eyrg4axe" path="res://item/items/blue_book.tres" id="3_yi4d3"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="4_2rcew"]
+
+[sub_resource type="Resource" id="Resource_1br5h"]
+script = ExtResource("4_2rcew")
+item_data = ExtResource("3_yi4d3")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_rhxbn"]
+script = ExtResource("2_alium")
+slot_datas = Array[ExtResource("4_2rcew")]([SubResource("Resource_1br5h"), null, null, null, null])
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_15is6"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5sk3"]
+albedo_color = Color(0.494118, 0.909804, 0.266667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dffhf"]
+material = SubResource("StandardMaterial3D_u5sk3")
+
+[node name="chest" type="StaticBody3D" groups=["external_inventory"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_x2sjw")
+inventory_data = SubResource("Resource_rhxbn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497014, 0)
+shape = SubResource("ConcavePolygonShape3D_15is6")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502986, 0)
+mesh = SubResource("BoxMesh_dffhf")
