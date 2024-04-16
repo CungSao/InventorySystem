@@ -25,10 +25,6 @@ func drop_slot_data(grabbed_slot_data, index) -> SlotData:
 	inventory_updated.emit(self)
 	return return_slot_data
 
-	#slot_datas[index] = grabbed_slot_data
-	#inventory_updated.emit(self)
-	#return slot_data
-
 
 func pick_up_slot_data(slot_data:SlotData) -> bool:
 	for index in slot_datas.size():

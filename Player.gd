@@ -59,3 +59,8 @@ func _physics_process(delta: float) -> void:
 func interact():
 	if interact_ray.is_colliding():
 		interact_ray.get_collider().player_interact()
+
+
+func get_drop_position() -> Vector3:
+	var direction = -camera.global_transform.basis.z
+	return camera.global_position + direction

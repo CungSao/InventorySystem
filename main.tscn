@@ -1,11 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c4pngr7ad0hjv"]
+[gd_scene load_steps=18 format=3 uid="uid://c4pngr7ad0hjv"]
 
 [ext_resource type="PackedScene" uid="uid://dbmp84630wnf2" path="res://Player.tscn" id="1_hc41y"]
 [ext_resource type="Script" path="res://main.gd" id="1_nj572"]
-[ext_resource type="PackedScene" uid="uid://g88toh8cecoo" path="res://inventory/inventory.tscn" id="2_4lcy2"]
 [ext_resource type="Resource" uid="uid://bsinxtn8wyb8k" path="res://test_inv.tres" id="2_wdbwu"]
-[ext_resource type="Script" path="res://inventory/InventoryInterface.gd" id="4_0uaar"]
-[ext_resource type="PackedScene" uid="uid://d2pxr0bwn4udn" path="res://inventory/slot.tscn" id="6_aeirf"]
+[ext_resource type="PackedScene" uid="uid://du8hp42wxtsso" path="res://UI/inventory_interface.tscn" id="4_7jl8h"]
 [ext_resource type="PackedScene" uid="uid://cr2x7s3kn13hc" path="res://interactable/chest.tscn" id="7_d58br"]
 [ext_resource type="PackedScene" uid="uid://dprxrrv3e750k" path="res://pickup/pickup.tscn" id="8_h2qbt"]
 [ext_resource type="Resource" uid="uid://dp6awpf8ejwep" path="res://item/items/apple.tres" id="9_58dcy"]
@@ -78,49 +76,12 @@ mesh = SubResource("PlaneMesh_n0npv")
 shape = SubResource("ConcavePolygonShape3D_8in4a")
 
 [node name="Player" parent="." instance=ExtResource("1_hc41y")]
+transform = Transform3D(0.236804, 0, 0.971557, 0, 1, 0, -0.971557, 0, 0.236804, 2.28923, 0, 0)
 inventory_data = ExtResource("2_wdbwu")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="InventoryInterface" type="Control" parent="UI"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_0uaar")
-
-[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("2_4lcy2")]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 74.0
-offset_bottom = 74.0
-
-[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("2_4lcy2")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("6_aeirf")]
-visible = false
-modulate = Color(1, 1, 1, 0.490196)
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
+[node name="InventoryInterface" parent="UI" instance=ExtResource("4_7jl8h")]
 
 [node name="chest" parent="." instance=ExtResource("7_d58br")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75578)
@@ -133,3 +94,5 @@ slot_data = SubResource("Resource_rqggt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634948, 2.32626, 2.08635)
 script = SubResource("GDScript_2ob3m")
 slot_data = SubResource("Resource_ap8br")
+
+[connection signal="drop_slot_data" from="UI/InventoryInterface" to="." method="_on_inventory_interface_drop_slot_data"]
