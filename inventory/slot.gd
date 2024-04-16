@@ -14,7 +14,8 @@ func set_slot_data(slot_data:SlotData):
 	if slot_data.quantity > 1:
 		quantity.text = "x%s" % slot_data.quantity
 		quantity.show()
-
+	else:
+		quantity.hide()
 
 func _on_gui_input(event:InputEvent):
 	if (event is InputEventMouseButton
