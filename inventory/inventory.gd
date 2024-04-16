@@ -4,9 +4,9 @@ const SLOT = preload("res://inventory/slot.tscn")
 
 @onready var item_grid = $MarginContainer/ItemGrid
 
-func _ready():
-	const TEST_INV = preload("res://test_inv.tres")
-	populate_item_grid(TEST_INV.slot_datas)
+#func _ready():
+	#const TEST_INV = preload("res://test_inv.tres")
+	#populate_item_grid(TEST_INV.slot_datas)
 
 func populate_item_grid(slot_datas:Array[SlotData]):
 	if item_grid.get_children() != []:
