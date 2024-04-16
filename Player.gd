@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal toggle_inventory()
+
 @export var inventory_data:InventoryData
 
 const SPEED = 5.0
@@ -22,7 +24,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-
+	
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory.emit()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

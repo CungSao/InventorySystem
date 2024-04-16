@@ -17,4 +17,4 @@ quantity = 1
 
 [resource]
 script = ExtResource("1_naj8e")
-slot_datas = Array[ExtResource("3_8t5mo")]([null, null, SubResource("Resource_h86nx"), null, null, null, SubResource("Resource_51x53"), null, null, null])
+slot_datas = Array[ExtResource("3_8t5mo")]([null, null, SubResource("Resource_h86nx"), null, null, null, SubResource("Resource_51x53"), null, null, null, null, null, null, null, null, null, null, null])

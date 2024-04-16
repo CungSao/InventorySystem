@@ -1,7 +1,10 @@
 extends PanelContainer
 
+signal slot_clicked(index:int, button:int)
+
 @onready var texture_rect = $MarginContainer/TextureRect
 @onready var quantity = $Quantity
+
 
 func set_slot_data(slot_data:SlotData):
 	var item_data = slot_data.item_data
@@ -11,3 +14,10 @@ func set_slot_data(slot_data:SlotData):
 	if slot_data.quantity > 1:
 		quantity.text = "x%s" % slot_data.quantity
 		quantity.show()
+
+
+func _on_gui_input(event:InputEvent):
+	if (event is InputEventMouseButton
+	and (event.button_index == MOUSE_BUTTON_RIGHT or event.button_index == MOUSE_BUTTON_LEFT)
+	and event.pressed ):
+		slot_clicked.emit(get_index(), event.button_index)

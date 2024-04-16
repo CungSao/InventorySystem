@@ -8,14 +8,19 @@ const SLOT = preload("res://inventory/slot.tscn")
 	#const TEST_INV = preload("res://test_inv.tres")
 	#populate_item_grid(TEST_INV.slot_datas)
 
-func populate_item_grid(slot_datas:Array[SlotData]):
-	if item_grid.get_children() != []:
-		for child in item_grid.get_children():
-			child.queue_free()
+func set_inventory_data(inventory_data:InventoryData):
+	populate_item_grid(inventory_data)
+
+func populate_item_grid(inventory_data:InventoryData):
+	for child in item_grid.get_children():
+		print("a")
+		child.queue_free()
 	
-	for slot_data in slot_datas:
+	for slot_data in inventory_data.slot_datas:
 		var slot = SLOT.instantiate()
 		item_grid.add_child(slot)
+		
+		slot.slot_clicked.connect(inventory_data.on_slot_clicked)
 
 		if slot_data:
 			slot.set_slot_data(slot_data)
