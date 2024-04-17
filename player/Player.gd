@@ -11,6 +11,7 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var health = 5
+var pressed:bool
 
 @onready var camera: Camera3D = $Camera3D
 @onready var interact_ray = $Camera3D/InteractRay
@@ -35,6 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		interact()
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

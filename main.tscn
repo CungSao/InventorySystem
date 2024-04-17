@@ -83,6 +83,7 @@ shape = SubResource("ConcavePolygonShape3D_8in4a")
 
 [node name="Player" parent="." instance=ExtResource("1_hc41y")]
 transform = Transform3D(0.236804, 0, 0.971557, 0, 1, 0, -0.971557, 0, 0.236804, 2.28923, 0, 0)
+collision_layer = 2
 inventory_data = ExtResource("2_wdbwu")
 equip_inventory_data = SubResource("Resource_ojfej")
 
@@ -96,7 +97,7 @@ equip_inventory_data = SubResource("Resource_ojfej")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.75578)
 
 [node name="Pickup" parent="." instance=ExtResource("8_h2qbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634948, 2.32626, -2.72844)
+transform = Transform3D(0.998823, 0.0485011, 0, -0.0485011, 0.998823, 0, 0, 0, 1, 1.90396, 2.32626, -2.72844)
 slot_data = SubResource("Resource_rqggt")
 
 [node name="Pickup2" parent="." instance=ExtResource("8_h2qbt")]
